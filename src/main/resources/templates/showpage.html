@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <h1>Meklēt grāmatu</h1>
     <hr class="featurette-divider">
-    <form th:action="@{/books}" method="get">
+    <form th:action="@{/book/search}" method="get">
         <div class="form-group">
             <input id="txtSearch" type="text" name="keyword" class="form-control" placeholder="Ievadiet grāmatas nosaukumu, izdošanas gadu vai izdevēju">
             <small id="searchHelp" class="form-text text-muted">Meklēšana pēc grāmatas metadatiem un autoriem</small>

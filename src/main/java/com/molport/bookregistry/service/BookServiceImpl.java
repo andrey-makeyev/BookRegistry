@@ -12,6 +12,10 @@ public class BookServiceImpl implements BookService {
     @Autowired
     protected BookRepository bookRepository;
 
+    public List<Book> getBooks(){
+        return bookRepository.findAll();
+    }
+
     public List<Book> findByKeyword(String keyword) {
         return bookRepository.findByKeyword(keyword);
 

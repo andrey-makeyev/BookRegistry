@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BookSearchController extends BookServiceImpl {
-    @GetMapping("/books/")
+    @GetMapping("/book/search")
     public String getBooks(Model model, String keyword) {
-        Iterable<Book> books = bookRepository.findAll();
         if (keyword != null) {
             model.addAttribute("book", findByKeyword(keyword));
         }
         else {
-            model.addAttribute("books", books);
+            model.addAttribute("books", getBooks());
         }
         return "showpage";
     }
