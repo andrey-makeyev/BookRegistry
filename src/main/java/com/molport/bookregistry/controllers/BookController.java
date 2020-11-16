@@ -11,7 +11,6 @@ import java.util.Optional;
 @Controller
 public class BookController extends BookServiceImpl {
 
-
     @GetMapping("/book/show")
     public String show(Model model) {
         Iterable<Book> books = bookRepository.findAll();
