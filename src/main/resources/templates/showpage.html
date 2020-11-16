@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Meklēt grāmatas</title>
+</head>
+
+<body>
+<div class="container marketing">
+<header th:insert="blocks/header :: header"></header>
+    <br>
+<div class="container mt-5">
+    <h1>Meklēt grāmatu</h1>
+    <hr class="featurette-divider">
+    <form>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ievadiet grāmatas nosaukumu, izdošanas gadu vai izdevēju">
+            <small id="emailHelp" class="form-text text-muted">Meklēšana pēc grāmatas metadatiem un autoriem</small>
+        </div>
+        <button type="submit" class="btn btn-success">Meklēt</button>
+    </form>
+    <div class="container mt-5">
+        <h1>Visas grāmatas</h1>
+        <div th:each="element : ${books}" class="alert alert-info mt-2">
+            <p>Nosaukums:</p>
+            <h3 th:text="${element.title}"></h3>
+            <p>Izdošanas gads:</p>
+            <h3 th:text="${element.year}"></h3>
+            <p>Izdevējs:</p>
+            <h3 th:text="${element.author}"></h3>
+            <a th:href="'/book/' + ${element.id}" class="btn btn-secondary">Skatīt vairāk</a>
+        </div>
+    </div>
+<hr class="featurette-divider">
+</div>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

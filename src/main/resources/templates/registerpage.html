@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Reģistrēt grāmatu</title>
+</head>
+
+<body>
+<div class="container marketing">
+<header th:insert="blocks/header :: header"></header>
+    <br>
+    <div class="container mt-5 mb-5">
+        <h1>Reģistrēt grāmatu</h1>
+        <hr class="featurette-divider">
+        <form action="/book/register" method="post">
+            <input type="text" name="booktitle" placeholder="Ievadiet grāmatas nosaukumu" class="form-control"><br>
+            <input type="text" name="bookyear" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control"><br>
+            <input type="text" name="bookauthor" placeholder="Ievadiet grāmatas izdevēju" class="form-control"><br>
+            <button type="submit" class="btn btn-success">Pievienot grāmatu datubazē</button>
+        </form>
+<hr class="featurette-divider">
+</div>
+</div>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>
