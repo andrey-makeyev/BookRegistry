@@ -16,11 +16,13 @@
         <form method="post">
             <p>Nosaukums:</p>
             <input type="text" th:value="${element.title}" name="booktitle" placeholder="Ievadiet grāmatas nosaukumu" class="form-control"><br>
+            <p>Apraksts:</p>
+            <textarea name="booktext" placeholder="Ievadiet grāmatas aprakstu" class="form-control" th:text="${element.text}"></textarea><br>
             <p>Izdošanas gads:</p>
             <input type="text" th:value="${element.year}" name="bookyear" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control"><br>
             <p>Izdevējs:</p>
             <input type="text" th:value="${element.author}" name="bookauthor" placeholder="Ievadiet grāmatas izdevēju" class="form-control"><br>
-            <button type="submit" class="btn btn-success">Izlabot</button>
+            <button type="submit" class="btn btn-outline-success">Izlabot</button>
         </form>
         </div>
         <hr class="featurette-divider">

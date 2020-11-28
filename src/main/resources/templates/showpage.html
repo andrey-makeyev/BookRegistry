@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Meklēt grāmatas</title>
+    <title>Meklēt grāmatas</title>
 </head>
 
 <body>
@@ -17,18 +17,20 @@
             <input id="txtSearch" type="text" name="keyword" class="form-control" placeholder="Ievadiet grāmatas nosaukumu, izdošanas gadu vai izdevēju">
             <small id="searchHelp" class="form-text text-muted">Meklēšana pēc grāmatas metadatiem un autoriem</small>
         </div>
-        <button type="submit" class="btn btn-success">Meklēt</button>
+        <button type="submit" class="btn btn-outline-info btn-lg">Meklēt</button>
     </form>
     <div class="container mt-5">
         <h1>Visas grāmatas</h1>
         <div th:each="element : ${books}" class="alert alert-info mt-2">
             <p>Nosaukums:</p>
             <h3 th:text="${element.title}"></h3>
+            <p>Apraksts:</p>
+            <h3 th:text="${element.text}"></h3>
             <p>Izdošanas gads:</p>
             <h3 th:text="${element.year}"></h3>
             <p>Izdevējs:</p>
             <h3 th:text="${element.author}"></h3>
-            <a th:href="'/book/' + ${element.id}" class="btn btn-secondary">Skatīt vairāk</a>
+            <a th:href="'/book/' + ${element.id}" class="btn btn-outline-secondary">Skatīt vairāk</a>
         </div>
     </div>
 <hr class="featurette-divider">

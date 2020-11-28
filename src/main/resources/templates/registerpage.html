@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Reģistrēt grāmatu</title>
+    <title>Reģistrēt grāmatu</title>
 </head>
 
 <body>
@@ -14,9 +14,10 @@
         <hr class="featurette-divider">
         <form action="/book/register" method="post">
             <input type="text" name="booktitle" placeholder="Ievadiet grāmatas nosaukumu" class="form-control"><br>
+            <textarea name="booktext" placeholder="Ievadiet grāmatas aprakstu" class="form-control"></textarea><br>
             <input type="text" name="bookyear" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control"><br>
             <input type="text" name="bookauthor" placeholder="Ievadiet grāmatas izdevēju" class="form-control"><br>
-            <button type="submit" class="btn btn-success">Pievienot grāmatu datubazē</button>
+            <button type="submit" class="btn btn-outline-success btn-lg">Pievienot grāmatu datubazē</button>
         </form>
 <hr class="featurette-divider">
 </div>

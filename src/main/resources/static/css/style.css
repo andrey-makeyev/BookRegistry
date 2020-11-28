@@ -5,8 +5,7 @@
 /* Padding below the footer and lighter body text */
 
 body {
-    font-family: arial, sans-serif;
-    background: url("../img/background.jpg") no-repeat;
+    font-family: "Open Sans", sans-serif;
     background-size: cover;
     padding-top: 3rem;
     padding-bottom: 3rem;

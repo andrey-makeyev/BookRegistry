@@ -5,11 +5,12 @@ import com.molport.bookregistry.service.BookServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.ArrayList;
 import java.util.Optional;
 
 @Controller
-public class BookController extends BookServiceImpl {
+public class BookController extends BookServiceImpl implements WebMvcConfigurer {
 
     @GetMapping("/book/show")
     public String show(Model model) {
@@ -24,8 +25,8 @@ public class BookController extends BookServiceImpl {
     }
 
     @PostMapping("/book/register")
-    public String bookRegister(@RequestParam String booktitle, @RequestParam int bookyear, @RequestParam String bookauthor, Model model) {
-        Book book = new Book(booktitle, bookyear, bookauthor);
+    public String bookRegister(@RequestParam String booktitle, @RequestParam String booktext, @RequestParam int bookyear, @RequestParam String bookauthor, Model model) {
+        Book book = new Book(booktitle, booktext, bookyear, bookauthor);
         bookRepository.save(book);
         return "showpage";
     }
@@ -56,9 +57,10 @@ public class BookController extends BookServiceImpl {
 
     private Object Null;
     @PostMapping("/book/{id}/edit")
-    public String bookUpdate(@PathVariable(value = "id") long id, @RequestParam String booktitle, @RequestParam int bookyear, @RequestParam String bookauthor, Model model) {
+    public String bookUpdate(@PathVariable(value = "id") long id, @RequestParam String booktitle, @RequestParam String booktext, @RequestParam int bookyear, @RequestParam String bookauthor, Model model) {
         Book book = bookRepository.findById(id).orElse((Book) Null);
         book.setTitle(booktitle);
+        book.setText(booktext);
         book.setYear(bookyear);
         book.setAuthor(bookauthor);
         bookRepository.save(book);

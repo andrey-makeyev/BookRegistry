@@ -15,13 +15,15 @@
             <div th:each="element : ${book}" class="alert alert-info mt-2">
                 <p>Nosaukums:</p>
                 <h5 th:text="${element.title}"></h5>
+                <p>Apraksts:</p>
+                <h5 th:text="${element.text}"></h5>
                 <p>Izdošanas gads:</p>
                 <h5 th:text="${element.year}"></h5>
                 <p>Izdevējs:</p>
                 <h5 th:text="${element.author}"></h5>
-                <a th:href="'/book/' + ${element.id} + '/edit'" class="btn btn-warning">Rediģēt</a><br><br>
+                <a th:href="'/book/' + ${element.id} + '/edit'" class="btn btn-outline-warning">Rediģēt</a><br><br>
                 <form th:action="'/book/' + ${element.id} + '/delete'" method="post">
-                    <button class="btn btn-danger" type="submit">Izdzēst</button>
+                    <button class="btn btn-outline-danger" type="submit">Izdzēst</button>
                 </form>
             </div>
         </div>
