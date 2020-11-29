@@ -22,10 +22,9 @@ DROP TABLE IF EXISTS `book`;
 CREATE TABLE `book` (
                             `id` int(10) NOT NULL AUTO_INCREMENT,
                             `title` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-                            `text` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
                             `year` int(50) DEFAULT NULL,
+                            `publisher` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
                             `author` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-                            `book_id` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
                             PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -40,13 +39,13 @@ CREATE TABLE `book` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-INSERT INTO book (title, text, year, author)
-VALUES ('Spring Boot Cookbook', 'Learn to create different types of Spring Boot applications, configure behavior, and add custom components.', 1999, 'Alex Antonov');
-INSERT INTO book (title, text, year, author)
-VALUES ('Deep Learning', 'This book will not only explain deep learning to you, as well as deep neural networks and all they encompass it will give you a better understanding of the applications and algorithms of deep learning. ', 2018, 'Leonard Eddison');
-INSERT INTO book (title, text, year, author)
-VALUES ('The DevOps Handbook', 'The DevOps Handbook shows leaders how to replicate these incredible outcomes, describing what is required from all parts of the technology organization.', 2018, 'Gene Kim, Patrick Debois, John Willis, Jez Humble');
-INSERT INTO book (title, text, year, author)
-VALUES ('Strategic IT Management', 'The book`s structure reflects the patterns that exist in strategic IT management from strategic planning to actual implementation.', 2009, 'Inge Hanschke');
-INSERT INTO book (title, text, year, author)
-VALUES ('Oracle Pl/SQL Programming', 'This one-of-a-kind applications development guide teaches Oracle developers the ins and outs of using PL/SQL in client/server applications. ', 1996, 'Scott Urman, Tim Smith');
+INSERT INTO book (title, year, publisher, author)
+VALUES ('Spring Boot Cookbook', 1999, 'Packt Publishing - ebooks Account', 'Alex Antonov');
+INSERT INTO book (title, year, publisher, author)
+VALUES ('Deep Learning: A Technical Approach To Artificial Intelligence For Beginners', 2018, 'CreateSpace Independent Publishing Platform', 'Leonard Eddison');
+INSERT INTO book (title, year, publisher, author)
+VALUES ('The DevOps Handbook: How to Create World-Class Agility Reliability and Security in Technology Organizations', 2018, 'IT Revolution Press', 'Gene Kim, Patrick Debois, John Willis, Jez Humble');
+INSERT INTO book (title, year, publisher, author)
+VALUES ('Strategic IT Management: A Toolkit for Enterprise Architecture Management', 2019, 'Springer', 'Inge Hanschke');
+INSERT INTO book (title, year, publisher, author)
+VALUES ('Oracle PL/SQL Programming Fundamentals: A Tutorial by Examples', 2014, 'CreateSpace Independent Publishing Platform', 'Djoni Darmawikarta');

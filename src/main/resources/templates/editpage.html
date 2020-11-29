@@ -14,14 +14,14 @@
         <hr class="featurette-divider">
         <div th:each="element : ${book}">
         <form method="post">
-            <h3>Nosaukums:</h3>
-            <input type="text" th:value="${element.title}" name="title" placeholder="Ievadiet grāmatas nosaukumu" class="form-control"><br>
-            <h3>Apraksts:</h3>
-            <textarea name="text" placeholder="Ievadiet grāmatas aprakstu" class="form-control" th:text="${element.text}"></textarea><br>
-            <h3>Izdošanas gads:</h3>
-            <input type="text" th:value="${element.year}" name="kyear" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control"><br>
+            <h3>Nosukums:</h3>
+            <textarea name="title" placeholder="Ievadiet grāmatas nosaukumu" class="form-control" th:text="${element.title}"></textarea><br>
             <h3>Izdevējs:</h3>
-            <input type="text" th:value="${element.author}" name="author" placeholder="Ievadiet grāmatas izdevēju" class="form-control"><br>
+            <input type="text" th:value="${element.publisher}" name="publisher" placeholder="Ievadiet grāmatas izdevēju" class="form-control"><br>
+            <h3>Gads:</h3>
+            <input type="text" th:value="${element.year}" name="kyear" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control"><br>
+            <h3>Autors:</h3>
+            <input type="text" th:value="${element.author}" name="author" placeholder="Ievadiet grāmatas autoru" class="form-control"><br>
             <br>
             <button type="submit" class="btn btn-outline-success">Izlabot</button>
         </form>

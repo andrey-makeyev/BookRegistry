@@ -13,13 +13,13 @@
             <h1>Grāmatu dati</h1>
                 <hr class="featurette-divider">
             <div th:each="element : ${book}" class="alert alert-info mt-2">
-                <p>Nosaukums:</p>
+                <p>Grāmatas nosaukums:</p>
                 <h5 th:text="${element.title}"></h5>
-                <p>Apraksts:</p>
-                <h5 th:text="${element.text}"></h5>
-                <p>Izdošanas gads:</p>
+                <p>Grāmatas izdošanas gads:</p>
                 <h5 th:text="${element.year}"></h5>
-                <p>Izdevējs:</p>
+                <p>Grāmatas izdevējs:</p>
+                <h5 th:text="${element.publisher}"></h5>
+                <p>Grāmatas autors:</p>
                 <h5 th:text="${element.author}"></h5>
                 <br>
                 <a th:href="'/book/' + ${element.id} + '/edit'" class="btn btn-outline-warning">Rediģēt</a><br><br>

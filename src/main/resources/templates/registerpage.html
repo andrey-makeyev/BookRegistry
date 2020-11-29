@@ -14,16 +14,16 @@
         <hr class="featurette-divider">
         <form action="#" th:action="@{/book/register}" th:object="${book}" method="post">
             <h3>Nosaukums:</h3>
-            <input type="text" name="title" th:field="*{title}" placeholder="Ievadiet grāmatas nosaukumu" class="form-control">
+            <textarea name="title" placeholder="Ievadiet grāmatas nosaukumu" class="form-control"></textarea>
             <span class="validationError" style="color:red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span><br>
-            <h3>Apraksts:</h3>
-            <textarea name="text" th:field="*{text}" placeholder="Ievadiet grāmatas aprakstu" class="form-control"></textarea>
-            <span class="validationError" style="color:red" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></span><br>
-            <h3>Izdošanas gads:
+            <h3>Izdevējs:</h3>
+            <input type="text" name="publisher" th:field="*{publisher}" placeholder="Ievadiet grāmatas izdevēju" class="form-control">
+            <span class="validationError" style="color:red" th:if="${#fields.hasErrors('publisher')}" th:errors="*{publisher}"></span><br>
+            <h3>Gads:
             </h3><input type="text" name="year" th:field="*{year}" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control">
             <span class="validationError" style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span><br>
-            <h3>Izdevējs:</h3>
-            <input type="text" name="author" th:field="*{author}" placeholder="Ievadiet grāmatas izdevēju" class="form-control">
+            <h3>Autors:</h3>
+            <input type="text" name="author" th:field="*{author}" placeholder="Ievadiet grāmatas autoru" class="form-control">
             <span class="validationError" style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span><br>
             <br>
             <button type="submit" class="btn btn-outline-success btn-lg">Pievienot grāmatu datubazē</button>

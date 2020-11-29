@@ -22,13 +22,13 @@
     <div class="container mt-5">
         <h1>Visas grāmatas</h1>
         <div th:each="element : ${books}" class="alert alert-info mt-2">
-            <p>Nosaukums:</p>
+            <p>Grāmatas nosaukums:</p>
             <h3 th:text="${element.title}"></h3>
-            <p>Apraksts:</p>
-            <h3 th:text="${element.text}"></h3>
-            <p>Izdošanas gads:</p>
+            <p>Grāmatas izdošanas gads:</p>
             <h3 th:text="${element.year}"></h3>
-            <p>Izdevējs:</p>
+            <p>Grāmatas izdevējs:</p>
+            <h3 th:text="${element.publisher}"></h3>
+            <p>Grāmatas autors:</p>
             <h3 th:text="${element.author}"></h3>
             <br>
             <a th:href="'/book/' + ${element.id}" class="btn btn-outline-secondary">Skatīt vairāk</a>
