@@ -1,10 +1,7 @@
 package com.molport.bookregistry.models;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Entity
 public class Book {
@@ -12,22 +9,24 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     @NotBlank(message = "Obligāts lauks!")
     private String title;
-    @NotNull(message = "Obligāts lauks! Tikai cipari!")
+
+    @NotBlank(message = "Obligāts lauks!")
     private String text;
+
+    @Min(value = 1377, message = "Gadam jābūt no 1377 līdz 2020!")
+    @Max(value = 2020, message = "Gadam jābūt no 1377 līdz 2020!")
+    @PositiveOrZero(message = "Tikai pozitīivie skaitļi!")
+    //@Pattern(regexp = "[\\s]*[0-9]*[1-9]+", message = "Tikai veselie skaitļi!")
+    @NotNull(message = "Obligāts lauks!")
     private int year;
+
     @NotBlank(message = "Obligāts lauks!")
     private String author;
 
-    public Book(String booktitle, String booktext, int bookyear, String bookauthor) {
-        this.title = booktitle;
-        this.text = booktext;
-        this.year = bookyear;
-        this.author = bookauthor;
-    }
-
-    public Book() {
+   public Book() {
     }
 
     public Long getId() {

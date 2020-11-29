@@ -4,8 +4,10 @@ import com.molport.bookregistry.models.Book;
 import com.molport.bookregistry.service.BookServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -21,13 +23,18 @@ public class BookController extends BookServiceImpl implements WebMvcConfigurer 
 
     @GetMapping("/book/register")
     public String register(Model model) {
+        model.addAttribute("book", new Book());
         return "registerpage";
     }
 
     @PostMapping("/book/register")
-    public String bookRegister(@RequestParam String booktitle, @RequestParam String booktext, @RequestParam int bookyear, @RequestParam String bookauthor, Model model) {
-        Book book = new Book(booktitle, booktext, bookyear, bookauthor);
-        bookRepository.save(book);
+    public String bookRegister(@ModelAttribute @Valid Book book, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("book", book);
+            return "registerpage";
+        } else {
+            bookRepository.save(book);
+        }
         return "showpage";
     }
 
@@ -57,12 +64,8 @@ public class BookController extends BookServiceImpl implements WebMvcConfigurer 
 
     private Object Null;
     @PostMapping("/book/{id}/edit")
-    public String bookUpdate(@PathVariable(value = "id") long id, @RequestParam String booktitle, @RequestParam String booktext, @RequestParam int bookyear, @RequestParam String bookauthor, Model model) {
+    public String bookUpdate(@PathVariable(value = "id") long id, Model model) {
         Book book = bookRepository.findById(id).orElse((Book) Null);
-        book.setTitle(booktitle);
-        book.setText(booktext);
-        book.setYear(bookyear);
-        book.setAuthor(bookauthor);
         bookRepository.save(book);
         return "showpage";
     }
