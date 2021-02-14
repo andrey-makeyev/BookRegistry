@@ -1,7 +1,8 @@
-package com.molport.bookregistry.controllers;
+package com.bookregistry.controllers;
 
-import com.molport.bookregistry.models.Book;
-import com.molport.bookregistry.service.BookServiceImpl;
+import com.bookregistry.models.Book;
+import com.bookregistry.services.BookServiceImpl;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,8 +17,8 @@ public class BookController extends BookServiceImpl implements WebMvcConfigurer 
 
     @GetMapping("/book/show")
     public String show(Model model) {
-        Iterable<Book> books = bookRepository.findAll();
-        model.addAttribute("books", books);
+      Iterable<Book> books = bookRepository.findAll();
+        model.addAttribute("book", books);
         return "showpage";
     }
 
@@ -74,6 +75,28 @@ public class BookController extends BookServiceImpl implements WebMvcConfigurer 
     public String bookRemove(@PathVariable(value = "id") long id, Model model) {
         Book book = bookRepository.findById(id).orElse((Book) Null);
         bookRepository.delete(book);
+        return "showpage";
+    }
+
+    @GetMapping("/book/search")
+    public String getBooks(Model model, @Param("keyword") String keyword) {
+        if (keyword != null) {
+            model.addAttribute("book", findByKeyword(keyword));
+        } else {
+            model.addAttribute("book", getBooks());
+        }
+        return "showpage";
+    }
+
+    /// by Author ///
+
+  @GetMapping("/book/search/byAuthor")
+    public String findByAuthorId(Model model, @Param("authorId") String name) {
+        if (name != null) {
+            model.addAttribute("author", findByAuthorId(model, name));
+             } else {
+            model.addAttribute("book", getBooks());
+        }
         return "showpage";
     }
 }

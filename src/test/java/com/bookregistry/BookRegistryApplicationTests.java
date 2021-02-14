@@ -1,4 +1,4 @@
-package com.molport.bookregistry;
+package com.bookregistry;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

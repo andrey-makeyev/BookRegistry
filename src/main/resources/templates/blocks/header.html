@@ -17,7 +17,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="/book/show">Meklēt grāmatas <span class="sr-only">(current)</span></a>
                 </li>
@@ -25,8 +25,16 @@
                     <a class="nav-link" href="/book/register">Reģistrēt grāmatu<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+            <div class="flipkart-navbar-search mr-auto">
+                <div class="row">
+                    <form th:action="@{/book/search}" method="get">
+                        <button type="submit" class="flipkart-navbar-button">Meklēt</button>
+                        <input id="txtSearch" type="text" name="keyword" class="flipkart-navbar-input" placeholder="Meklēt pēc metadatiem">
+
+                    </form>
+                </div>
+            </div>
         </div>
     </nav>
-
     </body>
 </div>

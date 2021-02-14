@@ -1,4 +1,4 @@
-package com.molport.bookregistry;
+package com.bookregistry;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

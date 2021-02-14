@@ -1,4 +1,4 @@
-package com.molport.bookregistry.controllers;
+package com.bookregistry.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

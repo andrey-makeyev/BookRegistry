@@ -12,16 +12,16 @@
 <div class="container mt-5">
     <h1>Meklēt grāmatu</h1>
     <hr class="featurette-divider">
-    <form th:action="@{/book/search}" method="get">
+    <form th:action="@{/book/search/byAuthor}" method="get">
         <div class="form-group">
-            <input id="txtSearch" type="text" name="keyword" class="form-control" placeholder="Ievadiet grāmatas nosaukumu, izdošanas gadu vai izdevēju">
-            <small id="searchHelp" class="form-text text-muted">Meklēšana pēc grāmatas metadatiem un autoriem</small>
+            <input id="Search" type="text" name="authorId" class="form-control" placeholder="Meklēt pēc autoriem">
+            <small id="searchHelp" class="form-text text-muted">Ievadiet grāmatas autoru</small>
         </div>
         <button type="submit" class="btn btn-outline-info btn-lg">Meklēt</button>
     </form>
     <div class="container mt-5">
         <h1>Visas grāmatas</h1>
-        <div th:each="element : ${books}" class="alert alert-info mt-2">
+        <div th:each="element : ${book}" class="alert alert-info mt-2">
             <p>Grāmatas nosaukums:</p>
             <h3 th:text="${element.title}"></h3>
             <p>Grāmatas izdošanas gads:</p>
@@ -29,7 +29,7 @@
             <p>Grāmatas izdevējs:</p>
             <h3 th:text="${element.publisher}"></h3>
             <p>Grāmatas autors:</p>
-            <h3 th:text="${element.author}"></h3>
+            <h3 th:text="${element.authorId}"></h3>
             <br>
             <a th:href="'/book/' + ${element.id}" class="btn btn-outline-secondary">Skatīt vairāk</a>
         </div>

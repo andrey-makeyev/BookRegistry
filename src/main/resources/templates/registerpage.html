@@ -23,8 +23,8 @@
             </h3><input type="text" name="year" th:field="*{year}" placeholder="Ievadiet grāmatas izdošanas gadu" class="form-control">
             <span class="validationError" style="color:red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></span><br>
             <h3>Autors:</h3>
-            <input type="text" name="author" th:field="*{author}" placeholder="Ievadiet grāmatas autoru" class="form-control">
-            <span class="validationError" style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span><br>
+            <input type="text" name="author" th:field="*{authorId}" placeholder="Ievadiet grāmatas autoru" class="form-control">
+            <span class="validationError" style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{authorId}"></span><br>
             <br>
             <button type="submit" class="btn btn-outline-success btn-lg">Pievienot grāmatu datubazē</button>
             </form>

@@ -16,17 +16,28 @@ USE `bookregistry`;
 -- Table structure for table `bookregistry`
 --
 
+DROP TABLE IF EXISTS `author`;
 DROP TABLE IF EXISTS `book`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
+
+CREATE TABLE `author` (
+                          `author_id` SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                          `name` VARCHAR(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 CREATE TABLE `book` (
-                            `id` int(10) NOT NULL AUTO_INCREMENT,
-                            `title` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-                            `year` int(50) DEFAULT NULL,
-                            `publisher` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
-                            `author` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
-                            PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+                        `id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        `author_id` SMALLINT UNSIGNED NOT NULL,
+                        `title` VARCHAR(200) NOT NULL,
+                        `year` SMALLINT NOT NULL,
+                        `publisher` varchar(50) NOT NULL,
+                        KEY `author_id` (`author_id`),
+                        CONSTRAINT `fk_book_author`
+                            FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`)
+                                ON DELETE CASCADE
+                                ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -39,13 +50,22 @@ CREATE TABLE `book` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-INSERT INTO book (title, year, publisher, author)
-VALUES ('Spring Boot Cookbook', 1999, 'Packt Publishing - ebooks Account', 'Alex Antonov');
-INSERT INTO book (title, year, publisher, author)
-VALUES ('Deep Learning: A Technical Approach To Artificial Intelligence For Beginners', 2018, 'CreateSpace Independent Publishing Platform', 'Leonard Eddison');
-INSERT INTO book (title, year, publisher, author)
-VALUES ('The DevOps Handbook: How to Create World-Class Agility Reliability and Security in Technology Organizations', 2018, 'IT Revolution Press', 'Gene Kim, Patrick Debois, John Willis, Jez Humble');
-INSERT INTO book (title, year, publisher, author)
-VALUES ('Strategic IT Management: A Toolkit for Enterprise Architecture Management', 2019, 'Springer', 'Inge Hanschke');
-INSERT INTO book (title, year, publisher, author)
-VALUES ('Oracle PL/SQL Programming Fundamentals: A Tutorial by Examples', 2014, 'CreateSpace Independent Publishing Platform', 'Djoni Darmawikarta');
+INSERT INTO author (name) VALUES ('Alex Antonov');
+INSERT INTO author (name) VALUES ('Leonard Eddison');
+INSERT INTO author (name) VALUES ('Gene Kim, Patrick Debois, John Willis, Jez Humble');
+INSERT INTO author (name) VALUES ('Patrick Debois');
+INSERT INTO author (name) VALUES ('John Willis');
+INSERT INTO author (name) VALUES ('Jez Humble');
+INSERT INTO author (name) VALUES ('Inge Hanschke');
+INSERT INTO author (name) VALUES ('Djoni Darmawikarta');
+
+INSERT INTO book (author_id, title, year, publisher)
+VALUES (LAST_INSERT_ID(), 'Spring Boot Cookbook', 1999, 'Packt Publishing - ebooks Account');
+INSERT INTO book (author_id, title, year, publisher)
+VALUES (LAST_INSERT_ID(), 'Deep Learning: A Technical Approach To Artificial Intelligence For Beginners', 2018, 'CreateSpace Independent Publishing Platform');
+INSERT INTO book (author_id, title, year, publisher)
+VALUES (LAST_INSERT_ID(), 'The DevOps Handbook: How to Create World-Class Agility Reliability and Security in Technology Organizations', 2018, 'IT Revolution Press');
+INSERT INTO book (author_id, title, year, publisher)
+VALUES (LAST_INSERT_ID(), 'Strategic IT Management: A Toolkit for Enterprise Architecture Management', 2019, 'Springer');
+INSERT INTO book (author_id, title, year, publisher)
+VALUES (LAST_INSERT_ID(), 'Oracle PL/SQL Programming Fundamentals: A Tutorial by Examples', 2014, 'CreateSpace Independent Publishing Platform');
