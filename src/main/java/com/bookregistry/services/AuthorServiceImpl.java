@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -15,7 +16,7 @@ public class AuthorServiceImpl implements AuthorService {
     public List<Author> getAuthors() {
         return authorRepository.findAll();
     }
-    public List<Author> findByAuthorId(String authorId) {
+    public Set<Author> findByAuthorId(String authorId) {
         return authorRepository.findByAuthorId(authorId);
     }
 }

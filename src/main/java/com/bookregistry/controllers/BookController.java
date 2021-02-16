@@ -1,5 +1,6 @@
 package com.bookregistry.controllers;
 
+import com.bookregistry.models.Author;
 import com.bookregistry.models.Book;
 import com.bookregistry.services.BookServiceImpl;
 import org.springframework.data.repository.query.Param;
@@ -91,7 +92,7 @@ public class BookController extends BookServiceImpl implements WebMvcConfigurer 
     /// by Author ///
 
   @GetMapping("/book/search/byAuthor")
-    public String findByAuthorId(Model model, @Param("authorId") String name) {
+    public String findByAuthorId(Model model, @Param("authors") String name) {
         if (name != null) {
             model.addAttribute("author", findByAuthorId(model, name));
              } else {

@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.transaction.Transactional;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -12,7 +14,7 @@ import java.util.Set;
 public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "title")
@@ -34,6 +36,8 @@ public class Book implements Serializable {
     @Column(name = "author_id")
     private int authorId;
 
+
+
     @OneToMany(mappedBy="book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Author> authors;
 
@@ -47,12 +51,15 @@ public class Book implements Serializable {
         this.year = year;
         this.publisher = publisher;
         this.authorId = authorId;
-        this.authors = (Set<Author>) authors;
     }
- /*   public String getAuthorName() {
-        return authors != null ? authors.getAuthorName() : "<none>";
-    } */
 
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
 
     public Long getId() {
         return id;
@@ -86,14 +93,6 @@ public class Book implements Serializable {
         this.publisher = publisher;
     }
 
-    public Author getAuthor() {
-    return (Author) authors;
-    }
-
-    public void setAuthor(Author authors) {
-        this.authors = (Set<Author>) authors;
-    }
-
     public int getAuthorId() {
         return authorId;
     }
@@ -103,7 +102,7 @@ public class Book implements Serializable {
     }
 
 
-    @Override
+ @Override
     public String toString() {
         if (this.authors == null) {
             return "Book [id=" + id + ", title=" + title + ", year=" + year + ", publisher =" + publisher + "]";

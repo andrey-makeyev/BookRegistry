@@ -20,7 +20,7 @@
                 <p>Grāmatas izdevējs:</p>
                 <h5 th:text="${element.publisher}"></h5>
                 <p>Grāmatas autors:</p>
-                <h5 th:text="${element.authorId}"></h5>
+                <h5 th:text="${element.authors}"></h5>
                 <br>
                 <a th:href="'/book/' + ${element.id} + '/edit'" class="btn btn-outline-warning">Rediģēt</a><br><br>
                 <form th:action="'/book/' + ${element.id} + '/delete'" method="post">

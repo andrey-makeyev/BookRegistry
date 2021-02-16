@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Author implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long author_id;
 
     @Column(name = "name")
@@ -31,22 +31,21 @@ public class Author implements Serializable {
     public Author() {
     }
 
-    public Author(Long author_id, String name, Book book) {
+   public Author(Long author_id, String name, Book book) {
         super();
         this.author_id = author_id;
         this.name = name;
-        this.book = book;
     }
 
-  /* public String getAuthorName() {
+    public String getAuthorName() {
         return name != null ? this.name : "<none>";
-    } */
+    }
 
-    public Long getId() {
+    public Long getAuthor_id() {
         return author_id;
     }
 
-    public void setId(Long author_id) {
+    public void setAuthor_id(Long author_id) {
         this.author_id = author_id;
     }
 
@@ -82,6 +81,6 @@ public class Author implements Serializable {
 
     @Override
   public String toString() {
-       return "{Author [name=" + name + "]}" ;
+       return name;
    }
 }

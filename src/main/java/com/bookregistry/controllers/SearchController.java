@@ -1,4 +1,4 @@
-/* package com.molport.bookregistry.controllers;
+/* package com.bookregistry.controllers;
 
 import BookServiceImpl;
 import org.slf4j.Logger;
